@@ -1,0 +1,68 @@
+---
+const { title, description } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="business.business" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --ink: #141414;
+    --wall: #f4f4f2;
+    --wall-2: #e9e9e6;
+    --orange: #e24a16;
+    --orange-deep: #c4400f;
+    --blue: #133a8e;
+    --blue-deep: #0d2b6b;
+    --line: #d8d8d4;
+    --muted: #57574f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Archivo', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--wall);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+  .wrap { width: min(1080px, 92vw); margin-inline: auto; }
+  .anton { font-family: 'Anton', 'Archivo', sans-serif; font-weight: 400; letter-spacing: .01em; text-transform: uppercase; }
+
+  /* the signature: angled orange+blue racing stripes */
+  .stripes { position: relative; }
+  .stripe-band {
+    display: block; width: 100%; height: 22px;
+    background: linear-gradient(180deg, var(--orange) 0 50%, var(--blue) 50% 100%);
+    transform: skewY(-2.4deg);
+    transform-origin: left;
+  }
+
+  /* Reveal is progressive enhancement: only hide when JS is active (html.js). */
+  @media (prefers-reduced-motion: no-preference) {
+    html.js .rise { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    html.js .rise.in { opacity: 1; transform: none; }
+  }
+
+  :focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+</style>

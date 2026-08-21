@@ -1,0 +1,303 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
+
+const phone = '(309) 732-0950';
+const phoneHref = 'tel:+13097320950';
+const address = '601 4th St, Rock Island, IL 61201';
+const mapsUrl = 'https://www.google.com/maps/search/?api=1&query=Discount%20Autobody%20Supply%20Inc%20601%204th%20St%20Rock%20Island%20IL%2061201&query_place_id=ChIJ86glLkYz4ocR0I2HAS7BUhs';
+const dirUrl = 'https://www.google.com/maps/dir/?api=1&destination=601%204th%20St%2C%20Rock%20Island%2C%20IL%2061201';
+
+// Only qualitative, category-faithful lines — no invented prices or scopes.
+const supplies = [
+  'Automotive refinish & topcoat paints',
+  'Primers, sealers & clearcoats',
+  'Custom paint color matching',
+  'Body filler, putty & glazes',
+  'Sandpaper, abrasives & prep supplies',
+  'Masking film, tape & paper',
+  'Spray guns, respirators & safety gear',
+  'Buffing, polishing & detailing products',
+];
+---
+<Layout
+  title="Discount Autobody Supply Inc — Auto Body Paint & Refinish Supplies | Rock Island, IL"
+  description="Discount Autobody Supply Inc in Rock Island, IL — automotive paint, primers, body filler, prep and refinish supplies. Rated 5.0 stars. Call (309) 732-0950.">
+
+  <!-- HEADER -->
+  <header class="site-head">
+    <div class="wrap head-in">
+      <a class="brand" href="#top" aria-label="Discount Autobody Supply Inc — home">
+        <span class="brand-mark" aria-hidden="true"><i class="o"></i><i class="b"></i></span>
+        <span class="brand-name anton">Discount Autobody <em>Supply</em></span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#supplies">Supplies</a>
+        <a href="#visit">Visit</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-call" href={phoneHref}>Call {phone}</a>
+      </nav>
+    </div>
+    <span class="stripe-band" aria-hidden="true"></span>
+  </header>
+
+  <!-- HERO: typographic wall + stripe cutting through -->
+  <section id="top" class="hero">
+    <div class="wrap hero-in">
+      <p class="eyebrow">Rock Island, Illinois · Est. auto body supply</p>
+      <h1 class="hero-word anton">
+        <span>Discount</span>
+        <span class="hero-mid">Autobody<span class="hero-stripe" aria-hidden="true"></span></span>
+        <span>Supply<span class="inc">Inc.</span></span>
+      </h1>
+      <p class="hero-sub">
+        The paint counter body shops and weekend restorers in the Quad Cities
+        actually drive to. Refinish paint, color matching, prep and finishing
+        supplies — over the counter, no runaround.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-orange" href={phoneHref}>Call the counter</a>
+        <a class="btn btn-ghost" href="#supplies">See what we stock</a>
+      </div>
+      <div class="hero-proof">
+        <strong>5.0</strong>
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <span class="proof-txt">Rated 5.0 from 19 Google &amp; Birdeye reviews</span>
+      </div>
+    </div>
+  </section>
+
+  <span class="stripe-band" aria-hidden="true"></span>
+
+  <!-- SUPPLIES: spec-sheet list, not cards -->
+  <section id="supplies" class="supplies">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <h2 class="anton">What's on the shelves</h2>
+        <p>A working supply house for collision, custom and DIY refinish work. Not sure if we carry it? Call &mdash; odds are we do, or we'll point you right.</p>
+      </div>
+      <ol class="spec">
+        {supplies.map((s, i) => (
+          <li class="rise">
+            <span class="spec-no">{String(i + 1).padStart(2, '0')}</span>
+            <span class="spec-name">{s}</span>
+          </li>
+        ))}
+      </ol>
+      <p class="spec-foot">Prices and current stock vary — call the counter at <a href={phoneHref}>{phone}</a> for what's on hand today.</p>
+    </div>
+  </section>
+
+  <!-- VISIT: real storefront photo anchors it -->
+  <section id="visit" class="visit">
+    <div class="wrap visit-in">
+      <div class="visit-photo rise">
+        <img src={`${base}images/storefront.jpg`} width="1200" height="676"
+          alt="Discount Autobody Supply Inc storefront on 4th St in Rock Island — white block building with orange and blue racing stripes and an orange entrance door." />
+      </div>
+      <div class="visit-info rise">
+        <h2 class="anton">Find the orange door</h2>
+        <p>You can't miss it — white block, orange &amp; blue stripes, corner of 4th Street.</p>
+        <dl class="facts">
+          <div>
+            <dt>Address</dt>
+            <dd><a href={mapsUrl} target="_blank" rel="noopener">{address}</a></dd>
+          </div>
+          <div>
+            <dt>Phone</dt>
+            <dd><a href={phoneHref}>{phone}</a></dd>
+          </div>
+          <div>
+            <dt>Hours</dt>
+            <dd>Thursday 8:00 AM &ndash; 4:30 PM<br /><span class="hours-note">Call for current weekday hours</span></dd>
+          </div>
+        </dl>
+        <div class="visit-cta">
+          <a class="btn btn-blue" href={dirUrl} target="_blank" rel="noopener">Get directions</a>
+          <a class="btn btn-ghost" href={phoneHref}>Call ahead</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <span class="stripe-band" aria-hidden="true"></span>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap contact-in">
+      <div class="contact-copy rise">
+        <h2 class="anton">Ask the counter</h2>
+        <p>Need a color matched or want to check stock before you drive over? Send a note and we'll get back to you &mdash; or just call, that's always fastest.</p>
+        <a class="big-call" href={phoneHref}>{phone}</a>
+      </div>
+      <form class="form rise" id="contactForm">
+        <label>Name<input type="text" name="name" required autocomplete="name" /></label>
+        <label>Email<input type="email" name="email" required autocomplete="email" /></label>
+        <label class="hp" aria-hidden="true">Leave this empty<input type="text" name="website_hp" tabindex="-1" autocomplete="off" /></label>
+        <label>What do you need?<textarea name="message" rows="4" required></textarea></label>
+        <button type="submit" class="btn btn-orange">Send message</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-foot">
+    <span class="stripe-band" aria-hidden="true"></span>
+    <div class="wrap foot-in">
+      <div>
+        <span class="anton foot-name">Discount Autobody Supply Inc</span>
+        <p>{address}</p>
+      </div>
+      <div class="foot-links">
+        <a href={phoneHref}>{phone}</a>
+        <a href={mapsUrl} target="_blank" rel="noopener">Google Maps</a>
+      </div>
+      <p class="foot-fine">&copy; {new Date().getFullYear()} Discount Autobody Supply Inc. Rock Island, IL.</p>
+    </div>
+  </footer>
+
+  <script is:inline>
+    // Mark JS active so reveal-hiding CSS applies (progressive enhancement).
+    document.documentElement.classList.add('js');
+    // reveal on scroll
+    const io = new IntersectionObserver((es) => {
+      es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.rise').forEach(el => io.observe(el));
+    // Belt-and-suspenders: never leave content hidden. Reveal on-screen items
+    // right away, and force-reveal everything on load regardless of viewport.
+    requestAnimationFrame(() => document.querySelectorAll('.rise').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 1.1) el.classList.add('in');
+    }));
+    window.addEventListener('load', () => setTimeout(() => {
+      document.querySelectorAll('.rise:not(.in)').forEach(el => el.classList.add('in'));
+    }, 1200));
+
+    // contact form
+    const f = document.getElementById('contactForm');
+    const s = document.getElementById('formStatus');
+    if (f) f.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      s.textContent = 'Sending…'; s.className = 'form-status';
+      const fd = Object.fromEntries(new FormData(f).entries());
+      try {
+        const r = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(fd) });
+        const j = await r.json();
+        if (j.ok) { s.textContent = 'Thanks — we got it. For the fastest answer, give us a call at (309) 732-0950.'; s.className = 'form-status ok'; f.reset(); }
+        else { s.textContent = j.error || 'Something went wrong. Please call (309) 732-0950.'; s.className = 'form-status err'; }
+      } catch (e) { s.textContent = 'Network error. Please call (309) 732-0950.'; s.className = 'form-status err'; }
+    });
+  </script>
+</Layout>
+
+<style>
+  /* HEADER */
+  .site-head { position: sticky; top: 0; z-index: 50; background: var(--wall); border-bottom: 1px solid var(--line); }
+  .head-in { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .7rem 0; }
+  .brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
+  .brand-mark { display: inline-flex; flex-direction: column; gap: 3px; width: 26px; }
+  .brand-mark i { height: 5px; border-radius: 1px; transform: skewX(-20deg); }
+  .brand-mark .o { background: var(--orange); }
+  .brand-mark .b { background: var(--blue); }
+  .brand-name { font-size: 1.15rem; line-height: 1; color: var(--ink); }
+  .brand-name em { font-style: normal; color: var(--orange); }
+  .nav { display: flex; align-items: center; gap: 1.4rem; }
+  .nav a { text-decoration: none; font-weight: 600; font-size: .95rem; color: var(--ink); }
+  .nav a:hover { color: var(--orange); }
+  .nav-call { background: var(--ink); color: var(--wall) !important; padding: .5rem .9rem; border-radius: 3px; }
+  .nav-call:hover { background: var(--blue); color: #fff !important; }
+
+  /* HERO */
+  .hero { padding: clamp(3rem, 8vw, 6.5rem) 0 clamp(2.5rem, 6vw, 4.5rem); background:
+    linear-gradient(180deg, var(--wall) 0%, var(--wall-2) 100%); }
+  .eyebrow { font-weight: 700; text-transform: uppercase; letter-spacing: .16em; font-size: .78rem; color: var(--blue); margin-bottom: 1.1rem; }
+  .hero-word { font-size: clamp(3rem, 13vw, 9rem); line-height: .92; color: var(--ink); }
+  .hero-word span { display: block; }
+  .hero-mid { position: relative; color: var(--orange); }
+  .hero-stripe { position: absolute; left: 0; right: -20vw; top: 54%;
+    height: clamp(10px, 1.6vw, 20px);
+    background: linear-gradient(180deg, var(--orange) 0 50%, var(--blue) 50% 100%);
+    transform: skewY(-3deg); z-index: -1; opacity: .9; }
+  .inc { font-size: .34em; margin-left: .4em; color: var(--muted); vertical-align: baseline; }
+  .hero-sub { max-width: 40ch; margin: 1.6rem 0 2rem; font-size: 1.12rem; color: var(--muted); }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-bottom: 2rem; }
+  .hero-proof { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+  .hero-proof strong { font-family: 'Anton', sans-serif; font-size: 1.8rem; color: var(--ink); }
+  .stars { color: var(--orange); letter-spacing: 2px; }
+  .proof-txt { color: var(--muted); font-size: .92rem; }
+
+  /* BUTTONS */
+  .btn { display: inline-block; text-decoration: none; font-weight: 700; padding: .8rem 1.5rem; border-radius: 3px; font-size: 1rem; transition: transform .15s ease, background .2s ease; }
+  .btn:active { transform: translateY(1px); }
+  .btn-orange { background: var(--orange); color: #fff; }
+  .btn-orange:hover { background: var(--orange-deep); }
+  .btn-blue { background: var(--blue); color: #fff; }
+  .btn-blue:hover { background: var(--blue-deep); }
+  .btn-ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: var(--wall); }
+
+  /* SUPPLIES */
+  .supplies { padding: clamp(3rem, 7vw, 5.5rem) 0; }
+  .sec-head { max-width: 52ch; margin-bottom: 2.6rem; }
+  .sec-head h2 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1; margin-bottom: .8rem; }
+  .sec-head p { color: var(--muted); font-size: 1.05rem; }
+  .spec { list-style: none; border-top: 2px solid var(--ink); }
+  .spec li { display: flex; align-items: baseline; gap: 1.2rem; padding: 1rem .2rem; border-bottom: 1px solid var(--line); }
+  .spec-no { font-family: 'Anton', sans-serif; color: var(--orange); font-size: 1.1rem; min-width: 2.2rem; }
+  .spec-name { font-size: 1.18rem; font-weight: 600; }
+  .spec li:hover .spec-name { color: var(--blue); }
+  .spec-foot { margin-top: 1.6rem; color: var(--muted); }
+  .spec-foot a { color: var(--orange); font-weight: 700; }
+
+  /* VISIT */
+  .visit { padding: clamp(2.5rem, 6vw, 4.5rem) 0; background: var(--wall-2); }
+  .visit-in { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+  .visit-photo { border: 3px solid var(--ink); border-radius: 4px; overflow: hidden; }
+  .visit-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .visit-info h2 { font-size: clamp(1.9rem, 4.5vw, 3rem); line-height: 1; margin-bottom: .6rem; }
+  .visit-info > p { color: var(--muted); margin-bottom: 1.6rem; }
+  .facts { display: grid; gap: 1rem; margin-bottom: 1.8rem; }
+  .facts dt { font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: .74rem; color: var(--blue); margin-bottom: .15rem; }
+  .facts dd { font-size: 1.08rem; }
+  .facts a { color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--orange); }
+  .facts a:hover { color: var(--orange); }
+  .hours-note { color: var(--muted); font-size: .9rem; }
+  .visit-cta { display: flex; flex-wrap: wrap; gap: .7rem; }
+
+  /* CONTACT */
+  .contact { padding: clamp(3rem, 7vw, 5.5rem) 0; }
+  .contact-in { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.6rem, 4vw, 3.5rem); align-items: start; }
+  .contact-copy h2 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1; margin-bottom: .8rem; }
+  .contact-copy p { color: var(--muted); margin-bottom: 1.6rem; max-width: 40ch; }
+  .big-call { font-family: 'Anton', sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); color: var(--blue); text-decoration: none; }
+  .big-call:hover { color: var(--orange); }
+  .form { display: grid; gap: 1rem; }
+  .form label { display: grid; gap: .35rem; font-weight: 600; font-size: .92rem; }
+  .form input, .form textarea { font: inherit; font-size: 16px; padding: .7rem .8rem; border: 2px solid var(--line); border-radius: 3px; background: #fff; }
+  .form input:focus, .form textarea:focus { border-color: var(--blue); outline: none; }
+  .form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .form button { justify-self: start; cursor: pointer; border: none; margin-top: .3rem; }
+  .form-status { font-size: .92rem; min-height: 1.2em; }
+  .form-status.ok { color: var(--blue); font-weight: 600; }
+  .form-status.err { color: var(--orange-deep); font-weight: 600; }
+
+  /* FOOTER */
+  .site-foot { background: var(--ink); color: var(--wall); }
+  .foot-in { display: grid; gap: 1rem; padding: 2.5rem 0 2rem; }
+  .foot-name { font-size: 1.3rem; color: #fff; display: block; margin-bottom: .3rem; }
+  .site-foot p { color: #b8b8b2; }
+  .foot-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+  .foot-links a { color: var(--wall); text-decoration: none; border-bottom: 2px solid var(--orange); padding-bottom: 1px; }
+  .foot-links a:hover { color: var(--orange); }
+  .foot-fine { font-size: .82rem; color: #86867e !important; }
+
+  @media (max-width: 760px) {
+    .nav { gap: .8rem; }
+    .nav a:not(.nav-call) { display: none; }
+    .visit-in, .contact-in { grid-template-columns: 1fr; }
+    .visit-photo { order: -1; }
+    .visit-photo img { max-height: min(48vh, 300px); }
+    .hero-stripe { right: -40vw; }
+  }
+</style>

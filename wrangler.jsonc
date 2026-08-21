@@ -1,0 +1,6 @@
+{
+  "name": "discount-autobody-supply",
+  "compatibility_date": "2024-09-01",
+  "main": "worker/index.js",
+  "assets": { "directory": "./dist", "binding": "ASSETS" }
+}

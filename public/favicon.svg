@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#f4f4f2"/>
+  <rect x="6" y="14" width="52" height="8" transform="skewY(-14)" fill="#e24a16"/>
+  <rect x="6" y="30" width="52" height="8" transform="skewY(-14)" fill="#133a8e"/>
+  <text x="32" y="56" font-family="Arial Black, sans-serif" font-size="26" font-weight="900" text-anchor="middle" fill="#141414">D</text>
+</svg>
